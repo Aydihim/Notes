@@ -9,7 +9,7 @@ function Note_params(): JSX.Element {
   const { id } = useParams();
   const { detail_note } = useSelector((store: RootState) => store.note);
   const [title, setTitle] = useState(detail_note?.title);
-  const [description, setDescription] = useState(detail_note?.description);
+  const [content, setContent] = useState(detail_note?.content);
   const [visible_text, setVisible_text] = useState(true);
   const [visible_input, setVisible_input] = useState(false);
 
@@ -24,7 +24,7 @@ function Note_params(): JSX.Element {
 
   const update_note_onClick = () => {
     replace_visible();
-    dispatch(update_note({ id: Number(id), title, description }));
+    dispatch(update_note({ id: Number(id), title, content }));
   };
 
   return (
@@ -32,7 +32,7 @@ function Note_params(): JSX.Element {
       {visible_text && (
         <div>
           <div>{detail_note?.title}</div>
-          <div>{detail_note?.description}</div>
+          <div>{detail_note?.content}</div>
           <button type="button" onClick={replace_visible}>
             Редактировать
           </button>
@@ -48,11 +48,11 @@ function Note_params(): JSX.Element {
             value={title}
           ></input>
           <input
-            name="description"
+            name="content"
             onChange={(e) => {
-              setDescription(e.target.value);
+              setContent(e.target.value);
             }}
-            value={description}
+            value={content}
           ></input>
           <button type="button" onClick={update_note_onClick}>
             Сохранить

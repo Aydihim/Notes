@@ -1,7 +1,7 @@
 export type Note = {
   id?: number;
   title: string;
-  description: string;
+  content: string;
 };
 export type State = {
   notes_arr: Note[];
