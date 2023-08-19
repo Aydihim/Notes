@@ -4,13 +4,13 @@ import { add_note } from "./notes_slice";
 
 function Form_add_note (): JSX.Element {
     const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+    const [content, setContent] = useState('');
 
     const dispatch = useAppDispatch();
 
     function add(e: React.FormEvent<HTMLFormElement>): void {
       e.preventDefault();
-      dispatch(add_note({ title, description }));
+      dispatch(add_note({ title, content }));
     }
 return (
 <form onSubmit={add} className="decor">
@@ -28,9 +28,9 @@ return (
           />
           <textarea
             placeholder="Текст заметки"
-            name="description"
-            onChange={(e) => setDescription(e.target.value)}
-            value={description}
+            name="content"
+            onChange={(e) => setContent(e.target.value)}
+            value={content}
           />
           <input type="submit" value="Добавить" />
         </div>
