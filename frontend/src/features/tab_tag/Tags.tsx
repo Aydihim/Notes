@@ -1,9 +1,9 @@
 import React from "react";
 
-function Remindes (): JSX.Element {
+function Tags (): JSX.Element {
     return (
         <h1>В РЕМОНТЕ</h1>
     )
 }
 
-export default Remindes;
+export default Tags;
