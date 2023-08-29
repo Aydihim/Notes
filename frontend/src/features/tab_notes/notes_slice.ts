@@ -8,6 +8,11 @@ const initialState: State = {
   error: undefined,
 };
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> dev
 export const init_notes = createAsyncThunk('note/init', () => api.init_notes_api());
 
 export const one_note = createAsyncThunk('note/one', (id: Id_note) =>

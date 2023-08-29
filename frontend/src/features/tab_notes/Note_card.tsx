@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { ReactNode, useState } from 'react';
+// import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../store';
-import { delete_note } from './notes_slice';
+
 import { Note } from './types/types';
+import Popup from './Popup';
 
 function Note_card({ note }: { note: Note }): JSX.Element {
-  const dispatch = useAppDispatch();
+  const [popupActive, setPopupActive] = useState(false);
   const navigate = useNavigate();
-  const delete_note_onClick = () => {
-    dispatch(delete_note(Number(note.id)));
-  };
+
   return (
-    <>
+    <div className="line">
       <div onClick={() => navigate(`/note/${note.id}`)}>{note.title}</div>
-      <button type="button" onClick={() => delete_note_onClick} />
-    </>
+      <button
+        className="button icon-del"
+        onClick={() => setPopupActive(true)}
+      />
+      <Popup active={popupActive} setActive={setPopupActive} idNote={note.id} />
+    </div>
   );
 }
 

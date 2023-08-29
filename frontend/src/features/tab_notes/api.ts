@@ -1,8 +1,11 @@
 import { Id_note, Note } from './types/types';
 
 export const init_notes_api = async (): Promise<Note[]> => {
+<<<<<<< HEAD
+=======
   console.log('fetch');
 
+>>>>>>> dev
   const res = await fetch('/api/note');
   return res.json();
 };

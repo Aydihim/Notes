@@ -3,14 +3,11 @@ const { Note } = require('../db/models');
 
 router.get('/', async (req, res) => {
   try {
-    console.log('back');
     const results = await Note.findAll({
       raw: true,
     });
     res.status(200).json(results);
   } catch ({ message }) {
-    console.log('back');
-
     res.status(500).json(message);
   }
 });

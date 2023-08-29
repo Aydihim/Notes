@@ -30,12 +30,19 @@ function Note_params(): JSX.Element {
   return (
     <>
       {visible_text && (
+<<<<<<< HEAD
+        <div className='content'>
+          <div>{detail_note?.title}</div>
+          <div>{detail_note?.content}</div>
+          <input type="submit" className='btn-all' onClick={replace_visible} value='Редактировать' />
+=======
         <div>
           <div>{detail_note?.title}</div>
           <div>{detail_note?.content}</div>
           <button type="button" onClick={replace_visible}>
             Редактировать
           </button>
+>>>>>>> dev
         </div>
       )}
       {visible_input && (
@@ -54,9 +61,13 @@ function Note_params(): JSX.Element {
             }}
             value={content}
           ></input>
+<<<<<<< HEAD
+          <input type="submit" className='btn-all' onClick={update_note_onClick} value='Сохранить'/>
+=======
           <button type="button" onClick={update_note_onClick}>
             Сохранить
           </button>
+>>>>>>> dev
         </div>
       )}
     </>
