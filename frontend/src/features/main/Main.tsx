@@ -11,16 +11,26 @@ function Main(): JSX.Element {
     { title: 'Напоминания', content: Remindes },
     { title: 'Теги', content: Tags },
   ];
+<<<<<<< HEAD
   const openTab = (e: any) => {
     setActive(e.target.dataset.index);
   }
   return (
     <div className="content">
+=======
+  const openTab = (e: any) => setActive(e.target.dataset.index);
+  return (
+    <div>
+>>>>>>> dev
       <div className="tab">
         {items.map((tab, i) => (
           <button
             key={i}
+<<<<<<< HEAD
             // className={i === active ? 'active' : ''}
+=======
+            className={`tablinks ${i === active ? 'active' : ''}`}
+>>>>>>> dev
             onClick={openTab}
             data-index={i}
           >
@@ -31,6 +41,10 @@ function Main(): JSX.Element {
 
       {items[active] && <TabContent {...items[active]}/>}
     </div>
+<<<<<<< HEAD
+=======
+    // <Notes />
+>>>>>>> dev
   );
 }
 

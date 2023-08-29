@@ -9,6 +9,11 @@ function Notes_list(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(init_notes());
+<<<<<<< HEAD
+=======
+    console.log('useEffect');
+    
+>>>>>>> dev
   }, []);
   return (
     <>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 
 function Tags(): JSX.Element {
@@ -12,3 +13,14 @@ function Tags(): JSX.Element {
 }
 
 export default Tags;
+=======
+import React from "react";
+
+function Tags (): JSX.Element {
+    return (
+        <h1>В РЕМОНТЕ</h1>
+    )
+}
+
+export default Tags;
+>>>>>>> dev

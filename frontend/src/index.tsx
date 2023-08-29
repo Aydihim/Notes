@@ -4,7 +4,10 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './app/App';
 import store from './store';
+<<<<<<< HEAD
 import './styles/style.css'
+=======
+>>>>>>> dev
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
