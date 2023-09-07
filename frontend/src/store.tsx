@@ -4,7 +4,7 @@ import notes_slice from './features/tab_notes/notes_slice';
 
 const store = configureStore ({
     reducer: {
-        note: notes_slice
+        note: notes_slice,
     }
 })
 

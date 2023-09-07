@@ -1,6 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-// import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+// import 'reactjs-popup/dist/index.css';
 import { useNavigate } from 'react-router-dom';
 
 import { Note } from './types/types';

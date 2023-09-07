@@ -16,6 +16,10 @@ function Note_params(): JSX.Element {
   useEffect(() => {
     dispatch(one_note(Number(id)));
   }, [id]);
+  useEffect(() => {
+    setTitle(detail_note?.title);
+    setContent(detail_note?.content);
+  }, [detail_note]);
 
   const replace_visible = () => {
     setVisible_input(!visible_input);
@@ -30,44 +34,39 @@ function Note_params(): JSX.Element {
   return (
     <>
       {visible_text && (
-<<<<<<< HEAD
-        <div className='content'>
+        <div className="content">
           <div>{detail_note?.title}</div>
           <div>{detail_note?.content}</div>
-          <input type="submit" className='btn-all' onClick={replace_visible} value='Редактировать' />
-=======
-        <div>
-          <div>{detail_note?.title}</div>
-          <div>{detail_note?.content}</div>
-          <button type="button" onClick={replace_visible}>
-            Редактировать
-          </button>
->>>>>>> dev
+          <input
+            type="submit"
+            className="btn-all"
+            onClick={replace_visible}
+            value="Редактировать"
+          />
         </div>
       )}
       {visible_input && (
         <div>
           <input
             name="title"
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
+            // onChange={(e) => {
+            //   setTitle(e.target.value);
+            // }}
             value={title}
-          ></input>
-          <input
+          />
+          <textarea
             name="content"
-            onChange={(e) => {
-              setContent(e.target.value);
-            }}
+            // onChange={(e) => {
+            //   setContent(e.target.value);
+            // }}
             value={content}
-          ></input>
-<<<<<<< HEAD
-          <input type="submit" className='btn-all' onClick={update_note_onClick} value='Сохранить'/>
-=======
-          <button type="button" onClick={update_note_onClick}>
-            Сохранить
-          </button>
->>>>>>> dev
+          />
+          <input
+            type="submit"
+            className="btn-all"
+            onClick={update_note_onClick}
+            value="Сохранить"
+          />
         </div>
       )}
     </>

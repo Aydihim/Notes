@@ -1,19 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as api from './api';
-import { Id_note, Note, State } from './types/types';
+import { Id_note, Note, Page_size, State } from './types/types';
 
 const initialState: State = {
   notes_arr: [],
   detail_note: {} as Note,
+  total_pages: 0,
   error: undefined,
 };
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> dev
-export const init_notes = createAsyncThunk('note/init', () => api.init_notes_api());
+export const init_notes = createAsyncThunk('note/init', (action: Page_size) =>
+  api.init_notes_api(action),
+);
 
 export const one_note = createAsyncThunk('note/one', (id: Id_note) =>
   api.one_note_api(id),
@@ -23,8 +21,8 @@ export const add_note = createAsyncThunk('note/add', (action: Note) =>
   api.add_note_api(action),
 );
 
-export const delete_note = createAsyncThunk('note/del', (action: Id_note) =>
-  api.delete_note_api(action),
+export const delete_note = createAsyncThunk('note/del', (id: Id_note) =>
+  api.delete_note_api(id),
 );
 
 export const update_note = createAsyncThunk('note/upd', (action: Note) =>
@@ -38,7 +36,10 @@ const notes_slice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(init_notes.fulfilled, (state, action) => {
-        state.notes_arr = action.payload;
+        console.log({action});
+        state.notes_arr = action.payload.note_rows;
+        
+        state.total_pages = action.payload.total_pages;
       })
       .addCase(init_notes.rejected, (state, action) => {
         state.error = action.error.message;
@@ -56,16 +57,15 @@ const notes_slice = createSlice({
         state.error = action.error.message;
       })
       .addCase(delete_note.fulfilled, (state, action) => {
-        state.notes_arr.filter((note) => {
-          note.id !== Number(action.payload);
-        });
+        console.log({action});
+        state.notes_arr = state.notes_arr.filter((note) => note.id !== Number(action.payload));
       })
       .addCase(delete_note.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(update_note.fulfilled, (state, action) => {
-        state.notes_arr = state.notes_arr.map((note) => 
-          note.id === action.payload.id ? action.payload : note
+        state.notes_arr = state.notes_arr.map((note) =>
+          note.id === action.payload.id ? action.payload : note,
         );
       })
       .addCase(update_note.rejected, (state, action) => {
