@@ -1,5 +1,6 @@
 import React from 'react';
-import { useAppDispatch } from '../../store';
+import { useSelector } from 'react-redux';
+import { RootState, useAppDispatch } from '../../store';
 import { delete_note } from './notes_slice';
 import { Id_note } from './types/types';
 
@@ -19,23 +20,24 @@ function Popup({
   };
   const closePopup = () => {
     setActive(false);
-    close()
-  }
+    close();
+  };
   return (
     <div
       className={active ? 'popup active' : 'popup'}
       onClick={() => setActive(false)}
     >
-    
       <div
         className={active ? 'popup-content active' : 'popup-content'}
         onClick={(e) => e.stopPropagation()}
       >
-          <button className="close" onClick={closePopup}>x</button>
+        <button className="close" onClick={closePopup}>
+          x
+        </button>
         <p>Вы уверены, что хотите удалить заметку?</p>
         <input
           type="submit"
-          className='btn-all'
+          className="btn-all"
           onClick={delete_note_onClick}
           value="Ok"
         />

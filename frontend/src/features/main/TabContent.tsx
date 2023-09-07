@@ -1,11 +1,4 @@
 import React, { useEffect } from 'react';
-<<<<<<< HEAD
-=======
-// import { useSelector } from 'react-redux';
-// import { RootState, useAppDispatch } from '../../store';
-// import { init_notes } from './notes_slice';
-// import Note_card from './Note_card';
->>>>>>> dev
 
 function TabContent({
   title,
