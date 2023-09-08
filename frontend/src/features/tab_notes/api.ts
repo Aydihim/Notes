@@ -8,8 +8,7 @@ import {
 export const init_notes_api = async (
   obj: Page_size,
 ): Promise<Notes_quantity> => {
-  console.log(obj.current_page, 'page');
-  const res = await fetch(`/api/note/${obj.current_page}/${obj.page_size}`);
+  const res = await fetch(`/api/note/page/${obj.current_page}/limit/${obj.page_size}`);
   return res.json();
 };
 
@@ -43,8 +42,6 @@ export const delete_note_api = async (id: Id_note): Promise<number> => {
 };
 
 export const upd_note_api = async (obj: Note): Promise<Note> => {
-  console.log('fetch');
-
   const res = await fetch(`/api/note/${obj.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },

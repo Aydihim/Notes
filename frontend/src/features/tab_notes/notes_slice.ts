@@ -36,9 +36,7 @@ const notes_slice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(init_notes.fulfilled, (state, action) => {
-        console.log({action});
         state.notes_arr = action.payload.note_rows;
-        
         state.total_pages = action.payload.total_pages;
       })
       .addCase(init_notes.rejected, (state, action) => {
@@ -57,7 +55,6 @@ const notes_slice = createSlice({
         state.error = action.error.message;
       })
       .addCase(delete_note.fulfilled, (state, action) => {
-        console.log({action});
         state.notes_arr = state.notes_arr.filter((note) => note.id !== Number(action.payload));
       })
       .addCase(delete_note.rejected, (state, action) => {

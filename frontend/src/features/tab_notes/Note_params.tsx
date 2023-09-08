@@ -16,6 +16,7 @@ function Note_params(): JSX.Element {
   useEffect(() => {
     dispatch(one_note(Number(id)));
   }, [id]);
+
   useEffect(() => {
     setTitle(detail_note?.title);
     setContent(detail_note?.content);
@@ -35,8 +36,8 @@ function Note_params(): JSX.Element {
     <>
       {visible_text && (
         <div className="content">
-          <div>{detail_note?.title}</div>
-          <div>{detail_note?.content}</div>
+          <div>{title}</div>
+          <div>{content}</div>
           <input
             type="submit"
             className="btn-all"
@@ -49,16 +50,16 @@ function Note_params(): JSX.Element {
         <div>
           <input
             name="title"
-            // onChange={(e) => {
-            //   setTitle(e.target.value);
-            // }}
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
             value={title}
           />
           <textarea
             name="content"
-            // onChange={(e) => {
-            //   setContent(e.target.value);
-            // }}
+            onChange={(e) => {
+              setContent(e.target.value);
+            }}
             value={content}
           />
           <input
