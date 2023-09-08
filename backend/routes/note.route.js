@@ -1,10 +1,9 @@
 const router = require('express').Router();
 const { Note } = require('../db/models');
 
-router.get('/:current_page/:page_size', async (req, res) => {
+router.get('/page/:current_page/limit/:page_size', async (req, res) => {
   try {
     const { current_page, page_size } = req.params;
-    console.log(current_page, 'я пытаюсь посмотреть currentPage');
 
     let page = 1;
     if (!Number.isNaN(Number(current_page)) && Number(current_page) > 0) {
@@ -22,10 +21,8 @@ router.get('/:current_page/:page_size', async (req, res) => {
       limit: size,
       offset: size * (page - 1),
     });
-    console.log('я пытаюсь посмотреть rows', results);
     res.status(200).json({
       note_rows: results.rows,
-      // total_pages: Math.ceil(results.count / Number(page_size)),
       total_pages: results.count,
     });
   } catch ({ message }) {
@@ -79,14 +76,13 @@ router.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const { title, content } = req.body;
-    console.log(title);
     const note = await Note.findOne({
-      where: Number(id),
+      where: { id: Number(id) },
     });
     note.title = title;
     note.content = content;
     note.save();
-    res.status(200).json(note);
+    res.status(201).json(note);
   } catch ({ message }) {
     res.status(500).json({ message });
   }
