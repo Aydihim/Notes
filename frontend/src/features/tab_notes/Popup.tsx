@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store';
-import { delete_note } from './notes_slice';
+import { delete_note, init_notes } from './notes_slice';
 import { Id_note } from './types/types';
 
 function Popup({
@@ -17,6 +17,7 @@ function Popup({
   const delete_note_onClick = () => {
     setActive(false);
     dispatch(delete_note(Number(idNote)));
+    // dispatch(init_notes(Number(idNote)));
   };
   const closePopup = () => {
     setActive(false);

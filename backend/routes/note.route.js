@@ -18,9 +18,11 @@ router.get('/page/:current_page/limit/:page_size', async (req, res) => {
       size = Number(current_page);
     }
     const results = await Note.findAndCountAll({
+      order: [['updatedAt', 'DESC']],
       limit: size,
       offset: size * (page - 1),
     });
+    console.log(results);
     res.status(200).json({
       note_rows: results.rows,
       total_pages: results.count,

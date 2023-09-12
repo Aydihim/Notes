@@ -1,13 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
-const cors = require('cors');
 
 const path = require('path');
-// const cookieParser = require('cookie-parser');
-// const session = require('express-session');
-// const sessionConfig = require('./config/session');
-// const fileUpload = require('express-fileupload');
 
 const app = express();
 
@@ -15,12 +10,8 @@ const PORT = 4000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
-// app.use(cookieParser());
-// app.use(session(sessionConfig));
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(fileUpload());
 
 const indexRoute = require('./routes/index.route');
 

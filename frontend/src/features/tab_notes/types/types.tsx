@@ -15,6 +15,7 @@ export type State = {
   notes_arr: Note[];
   detail_note: Note;
   total_pages: Total_pages,
+  for_get: boolean,
   error: string | undefined;
 };
 

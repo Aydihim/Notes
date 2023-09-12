@@ -6,14 +6,13 @@ import { init_notes } from './notes_slice';
 import Note_card from './Note_card';
 
 function Notes_list(): JSX.Element {
+  const { notes_arr, total_pages, for_get } = useSelector((store: RootState) => store.note);
   const [current_page, setCurrent_page] = useState(1);
   const page_size = 3;
-  const { notes_arr, total_pages } = useSelector((store: RootState) => store.note);
-
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(init_notes({current_page, page_size}));
-  }, [current_page, page_size]);
+  }, [current_page, page_size, for_get]);
 
   return (
     <div className='one-note-card'>
@@ -24,7 +23,6 @@ function Notes_list(): JSX.Element {
             totalCount={total_pages}
             pageSize={page_size}
             onPageChange={(page: number) => setCurrent_page(page)}
-            // siblingCount={1}
             />
     </div>
   );
