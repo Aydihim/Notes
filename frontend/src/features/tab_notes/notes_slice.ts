@@ -6,6 +6,7 @@ const initialState: State = {
   notes_arr: [],
   detail_note: {} as Note,
   total_pages: 0,
+  for_get: true,
   error: undefined,
 };
 
@@ -50,12 +51,14 @@ const notes_slice = createSlice({
       })
       .addCase(add_note.fulfilled, (state, action) => {
         state.notes_arr.push(action.payload);
+        state.for_get = !state.for_get;
       })
       .addCase(add_note.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(delete_note.fulfilled, (state, action) => {
         state.notes_arr = state.notes_arr.filter((note) => note.id !== Number(action.payload));
+        state.for_get = !state.for_get;
       })
       .addCase(delete_note.rejected, (state, action) => {
         state.error = action.error.message;
