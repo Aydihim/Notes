@@ -20,15 +20,18 @@ function Form_add_note(): JSX.Element {
       <input
         placeholder="Заголовок"
         type="text"
+        maxLength={40}
         name="title"
         onChange={(e) => setTitle(e.target.value)}
         value={title}
+        required
       />
       <textarea
         placeholder="Текст заметки"
         name="content"
         onChange={(e) => setContent(e.target.value)}
         value={content}
+        required
       />
       <input type="submit" className="btn-add" value="Добавить" />
     </form>
