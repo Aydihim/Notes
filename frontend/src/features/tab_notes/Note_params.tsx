@@ -35,9 +35,9 @@ function Note_params(): JSX.Element {
   return (
     <>
       {visible_text && (
-        <div className="content">
-          <div>{title}</div>
-          <div>{content}</div>
+        <div className="content params_content">
+          <h3 className='title_detail'>{title}</h3>
+          <div className='content_detail'>{content}</div>
           <input
             type="submit"
             className="btn-all"
@@ -54,6 +54,7 @@ function Note_params(): JSX.Element {
               setTitle(e.target.value);
             }}
             value={title}
+            required
           />
           <textarea
             name="content"
@@ -61,6 +62,7 @@ function Note_params(): JSX.Element {
               setContent(e.target.value);
             }}
             value={content}
+            required
           />
           <input
             type="submit"

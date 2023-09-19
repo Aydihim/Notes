@@ -8,7 +8,7 @@ import Note_card from './Note_card';
 function Notes_list(): JSX.Element {
   const { notes_arr, total_pages, for_get } = useSelector((store: RootState) => store.note);
   const [current_page, setCurrent_page] = useState(1);
-  const page_size = 3;
+  const page_size = 6;
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(init_notes({current_page, page_size}));

@@ -11,7 +11,7 @@ function Note_card({ note }: { note: Note }): JSX.Element {
 
   return (
     <div className="line">
-      <div onClick={() => navigate(`/note/${note.id}`)}>{note.title}</div>
+      <div className="title_note" onClick={() => navigate(`/note/${note.id}`)}>{note.title}</div>
       <button
         className="button icon-del"
         onClick={() => setPopupActive(true)}

@@ -9,11 +9,11 @@ router.get('/page/:current_page/limit/:page_size', async (req, res) => {
     if (!Number.isNaN(Number(current_page)) && Number(current_page) > 0) {
       page = Number(current_page);
     }
-    let size = 3;
+    let size = 6;
     if (
       !Number.isNaN(Number(page_size)) &&
       Number(page_size) > 0 &&
-      Number(page_size) < 3
+      Number(page_size) < 6
     ) {
       size = Number(current_page);
     }
