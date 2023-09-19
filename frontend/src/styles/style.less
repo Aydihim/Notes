@@ -1,0 +1,58 @@
+// compress: true
+
+@import "_vars";
+
+html,
+body {
+  font-size: 15px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #7d7a75;
+  background: url('../../public/img/Wallpaper.jpeg') no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.btn-all {
+  background-color: @orange;
+  width: 30%;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+}
+
+.repair {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+img {
+  height: 300px;
+  width: 450px;
+}
+
+// Blocks
+
+@import 'blocks/form.less';
+@import 'blocks/popup.less';
+@import 'blocks/tab.less';
+@import 'blocks/list.less';
+@import 'blocks/pagination.less';
+
