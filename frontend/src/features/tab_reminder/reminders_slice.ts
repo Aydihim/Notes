@@ -10,24 +10,29 @@ const initialState: State = {
   error: undefined,
 };
 
-export const init_reminders = createAsyncThunk('reminder/init', (action: Page_size) =>
-  api.init_reminders_api(action),
+export const init_reminders = createAsyncThunk(
+  'reminder/init',
+  (action: Page_size) => api.init_reminders_api(action),
 );
 
-export const one_reminder = createAsyncThunk('reminder/one', (id: Id_reminder) =>
-  api.one_reminder_api(id),
+export const one_reminder = createAsyncThunk(
+  'reminder/one',
+  (id: Id_reminder) => api.one_reminder_api(id),
 );
 
-export const add_reminder = createAsyncThunk('reminder/add', (action: Reminder) =>
-  api.add_reminder_api(action),
+export const add_reminder = createAsyncThunk(
+  'reminder/add',
+  (action: Reminder) => api.add_reminder_api(action),
 );
 
-export const delete_reminder = createAsyncThunk('reminder/del', (id: Id_reminder) =>
-  api.delete_reminder_api(id),
+export const delete_reminder = createAsyncThunk(
+  'reminder/del',
+  (id: Id_reminder) => api.delete_reminder_api(id),
 );
 
-export const update_reminder = createAsyncThunk('reminder/upd', (action: Reminder) =>
-  api.upd_reminder_api(action),
+export const update_reminder = createAsyncThunk(
+  'reminder/upd',
+  (action: Reminder) => api.upd_reminder_api(action),
 );
 
 const reminders_slice = createSlice({
@@ -57,7 +62,9 @@ const reminders_slice = createSlice({
         state.error = action.error.message;
       })
       .addCase(delete_reminder.fulfilled, (state, action) => {
-        state.reminders_arr = state.reminders_arr.filter((reminder) => reminder.id !== Number(action.payload));
+        state.reminders_arr = state.reminders_arr.filter(
+          (reminder) => reminder.id !== Number(action.payload),
+        );
         state.for_get = !state.for_get;
       })
       .addCase(delete_reminder.rejected, (state, action) => {
@@ -65,7 +72,7 @@ const reminders_slice = createSlice({
       })
       .addCase(update_reminder.fulfilled, (state, action) => {
         state.reminders_arr = state.reminders_arr.map((reminder) =>
-        reminder.id === action.payload.id ? action.payload : reminder,
+          reminder.id === action.payload.id ? action.payload : reminder,
         );
       })
       .addCase(update_reminder.rejected, (state, action) => {

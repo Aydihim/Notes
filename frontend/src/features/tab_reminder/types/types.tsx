@@ -1,7 +1,7 @@
 export type Reminder = {
   id?: number;
-  title: string;
   content: string;
+  deadline: string;
 };
 
 export type Total_pages = number;
