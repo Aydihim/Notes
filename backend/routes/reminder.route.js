@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Note } = require('../db/models');
+const { Reminder } = require('../db/models');
 
 router.get('/page/:current_page/limit/:page_size', async (req, res) => {
   try {
@@ -17,13 +17,13 @@ router.get('/page/:current_page/limit/:page_size', async (req, res) => {
     ) {
       size = Number(current_page);
     }
-    const results = await Note.findAndCountAll({
+    const results = await Reminder.findAndCountAll({
       order: [['updatedAt', 'DESC']],
       limit: size,
       offset: size * (page - 1),
     });
     res.status(200).json({
-      note_rows: results.rows,
+      reminder_rows: results.rows,
       total_pages: results.count,
     });
   } catch ({ message }) {
@@ -31,11 +31,11 @@ router.get('/page/:current_page/limit/:page_size', async (req, res) => {
   }
 });
 
-router.get('/:id_note', async (req, res) => {
+router.get('/:id_reminder', async (req, res) => {
   try {
-    const { id_note } = req.params;
-    const result = await Note.findOne({
-      where: { id: Number(id_note) },
+    const { id_reminder } = req.params;
+    const result = await Reminder.findOne({
+      where: { id: Number(id_reminder) },
       raw: true,
     });
     res.status(200).json(result);
@@ -46,11 +46,11 @@ router.get('/:id_note', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const { title, content } = req.body;
-    if (title && content) {
-      const note = await Note.create({
-        title,
+    const { content, deadline } = req.body;
+    if (content && deadline) {
+      const note = await Reminder.create({
         content,
+        deadline,
       });
       res.status(201).json(note);
     }
@@ -59,31 +59,32 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.delete('/:id_note', async (req, res) => {
+router.delete('/:id_reminder', async (req, res) => {
   try {
-    const { id_note } = req.params;
-    const result = await Note.destroy({
-      where: { id: Number(id_note) },
+    const { id_reminder } = req.params;
+    const result = await Reminder.destroy({
+      where: { id: Number(id_reminder) },
     });
     if (result) {
-      res.status(200).json(Number(id_note));
+      res.status(200).json(Number(id_reminder));
     }
   } catch ({ message }) {
     res.status(500).json({ message });
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id_reminder', async (req, res) => {
   try {
-    const { id } = req.params;
-    const { title, content } = req.body;
-    const note = await Note.findOne({
-      where: { id: Number(id) },
+    const { id_reminder } = req.params;
+    const {content, deadline } = req.body;
+    console.log('back', deadline);
+    const reminder = await Reminder.findOne({
+      where: { id: Number(id_reminder) },
     });
-    note.title = title;
-    note.content = content;
-    note.save();
-    res.status(201).json(note);
+    reminder.content = content;
+    reminder.deadline = deadline;
+    reminder.save();
+    res.status(201).json(reminder);
   } catch ({ message }) {
     res.status(500).json({ message });
   }
