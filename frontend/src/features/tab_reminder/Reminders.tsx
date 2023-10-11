@@ -7,6 +7,7 @@ function Reminders(): JSX.Element {
       <div className="notes-list-form">
       <Reminders_list />
       <Form_add_reminder />
+      {/* ghjdthrf */}
       </div>
   );
 }
