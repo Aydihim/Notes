@@ -9,22 +9,14 @@ function Tag_card({ tag }: { tag: Tag }): JSX.Element {
   const navigate = useNavigate();
 
   return (
-    <div className="line">
-      <div
-        className="title_note"
-        onClick={() => navigate(`/tag/${tag.id}`)}
-      >
+    <div className="tag_line">
+      <div className="title_tag" onClick={() => navigate(`/tag/${tag.id}`)}>
         {tag.title}
       </div>
       <button
-        className="button icon-del"
-        onClick={() => setPopupActive(true)}
-      />
-      <Popup
-        active={popupActive}
-        setActive={setPopupActive}
-        idTag={tag.id}
-      />
+        className="button"
+        onClick={() => setPopupActive(true)}> x </button>
+      <Popup active={popupActive} setActive={setPopupActive} idTag={tag.id} />
     </div>
   );
 }

@@ -14,6 +14,7 @@ function Form_add_tag(): JSX.Element {
   }
   return (
     <form onSubmit={add} className="form">
+      <div className="position">
       <h3 className="form-title">Придумайте тег</h3>
       <input
         placeholder="#"
@@ -25,6 +26,7 @@ function Form_add_tag(): JSX.Element {
         required
       />
       <input type="submit" className="btn-add" value="Добавить" />
+      </div>
     </form>
   );
 }
