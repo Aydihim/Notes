@@ -36,7 +36,7 @@ export const update_reminder = createAsyncThunk(
 );
 
 const reminders_slice = createSlice({
-  name: 'note',
+  name: 'reminder',
   initialState,
   reducers: {},
   extraReducers(builder) {
