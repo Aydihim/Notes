@@ -1,22 +1,21 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../store';
-import { delete_reminder } from './reminders_slice';
-import { Id_reminder } from './types/types';
+import { useAppDispatch } from '../../store';
+import { delete_tag } from './tags_slice';
+import { Id_tag } from './types/types';
 
 function Popup({
   active,
   setActive,
-  idReminder,
+  idTag,
 }: {
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
-  idReminder: Id_reminder;
+  idTag: Id_tag;
 }): JSX.Element {
   const dispatch = useAppDispatch();
-  const delete_reminder_onClick = () => {
+  const delete_tag_onClick = () => {
     setActive(false);
-    dispatch(delete_reminder(Number(idReminder)));
+    dispatch(delete_tag(Number(idTag)));
   };
   const closePopup = () => {
     setActive(false);
@@ -34,11 +33,11 @@ function Popup({
         <button className="close" onClick={closePopup}>
           x
         </button>
-        <p>Вы уверены, что хотите удалить напоминание?</p>
+        <p>Вы уверены, что хотите удалить тег?</p>
         <input
           type="submit"
           className="btn-all"
-          onClick={delete_reminder_onClick}
+          onClick={delete_tag_onClick}
           value="Ok"
         />
       </div>

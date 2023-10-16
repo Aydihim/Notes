@@ -1,11 +1,10 @@
-import React, { ReactNode, useState } from 'react';
-// import 'reactjs-popup/dist/index.css';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Reminder } from './types/types';
+import { Tag } from './types/types';
 import Popup from './Popup';
 
-function Reminder_card({ reminder }: { reminder: Reminder }): JSX.Element {
+function Tag_card({ tag }: { tag: Tag }): JSX.Element {
   const [popupActive, setPopupActive] = useState(false);
   const navigate = useNavigate();
 
@@ -13,11 +12,10 @@ function Reminder_card({ reminder }: { reminder: Reminder }): JSX.Element {
     <div className="line">
       <div
         className="title_note"
-        onClick={() => navigate(`/reminder/${reminder.id}`)}
+        onClick={() => navigate(`/tag/${tag.id}`)}
       >
-        {reminder.content}
+        {tag.title}
       </div>
-      <div>{reminder.deadline}</div>
       <button
         className="button icon-del"
         onClick={() => setPopupActive(true)}
@@ -25,10 +23,10 @@ function Reminder_card({ reminder }: { reminder: Reminder }): JSX.Element {
       <Popup
         active={popupActive}
         setActive={setPopupActive}
-        idReminder={reminder.id}
+        idTag={tag.id}
       />
     </div>
   );
 }
 
-export default Reminder_card;
+export default Tag_card;

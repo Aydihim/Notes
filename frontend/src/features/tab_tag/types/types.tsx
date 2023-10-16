@@ -1,25 +1,23 @@
-export type Reminder = {
+export type Tag = {
   id?: number;
-  content: string;
-  deadline: string;
+  title: string;
 };
 
 export type Total_pages = number;
 
-export type Reminders_quantity = {
-  reminder_rows: Reminder[];
+export type Tags_quantity = {
+  tag_rows: Tag[];
   total_pages: Total_pages;
 };
 
 export type State = {
-  reminders_arr: Reminder[];
-  detail_reminder: Reminder;
+  tags_arr: Tag[];
   total_pages: Total_pages,
   for_get: boolean,
   error: string | undefined;
 };
 
-export type Id_reminder = Reminder['id']
+export type Id_tag = Tag['id']
 
 export type Page_size = {
   current_page: number;

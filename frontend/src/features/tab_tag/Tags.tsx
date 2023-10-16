@@ -1,13 +1,13 @@
 import React from 'react';
+import Form_add_tag from './Form_add_tag';
+import Tags_list from './Tags_list';
 
 function Tags(): JSX.Element {
   return (
-    <>
-      <h2 className="repair">В РЕМОНТЕ 🤷🏼‍♀️</h2>;
-      <p>
-        <img src="/img/repair.jpeg" alt="myau" />
-      </p>
-    </>
+    <div className="notes-list-form">
+      <Tags_list />
+      <Form_add_tag />
+      </div>
   );
 }
 
