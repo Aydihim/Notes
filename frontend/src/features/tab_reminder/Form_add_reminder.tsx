@@ -16,7 +16,7 @@ function Form_add_reminder(): JSX.Element {
   }
   return (
     <form onSubmit={add} className="form">
-      <h3 className="form-title">Добавьте напоминание</h3>
+      <h3 className="form-title">Что вам напомнить?</h3>
       <input
         placeholder="Заголовок"
         type="text"
