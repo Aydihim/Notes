@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import notes_slice from './features/tab_notes/notes_slice';
 import reminders_slice from './features/tab_reminder/reminders_slice';
+import tags_slice from './features/tab_tag/tags_slice';
 
 const store = configureStore ({
     reducer: {
         note: notes_slice,
         reminder: reminders_slice,
+        tag: tags_slice
     }
 })
 

@@ -48,11 +48,11 @@ router.post('/', async (req, res) => {
   try {
     const { content, deadline } = req.body;
     if (content && deadline) {
-      const note = await Reminder.create({
+      const reminder = await Reminder.create({
         content,
         deadline,
       });
-      res.status(201).json(note);
+      res.status(201).json(reminder);
     }
   } catch ({ message }) {
     res.status(500).json({ message });
